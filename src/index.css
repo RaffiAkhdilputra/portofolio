@@ -43,8 +43,8 @@
     --gold-dark: 38 92% 40%;
     
     /* Typography */
-    --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
-    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-heading: 'poppins', -apple-system, sans-serif;
+    --font-body: 'poppins', -apple-system, sans-serif;
     
     /* Spacing */
     --container-padding: 2rem;
@@ -58,6 +58,7 @@
 
 @layer base {
   * {
+    cursor: default; 
     border-color: hsl(var(--border));
   }
   
@@ -75,17 +76,17 @@
   }
   
   h1 {
-    font-size: 3rem;
+    font-size: 5rem;
     line-height: 1;
   }
   
   h2 {
-    font-size: 2.25rem;
+    font-size: 3rem;
     line-height: 2.5rem;
   }
   
   h3 {
-    font-size: 1.875rem;
+    font-size: 2.25rem;
     line-height: 2.25rem;
   }
 
@@ -257,7 +258,7 @@
 /* Hero Section */
 .hero-section {
   min-height: 100vh;
-  padding-top: 5rem;
+  padding: 10rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -269,9 +270,10 @@
 }
 
 .profile-picture {
+  z-index: -10;
   position: relative;
   position: absolute;
-  top: -50%;
+  top: 0;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 35rem;
@@ -324,6 +326,7 @@
 }
 
 .hero-social-link {
+  cursor: pointer;
   width: 3rem;
   height: 3rem;
   display: flex;
@@ -338,14 +341,67 @@
   transition: all 0.3s;
 }
 
+.hero-social-link svg, .hero-social-link path {
+  cursor: pointer;
+}
+
 .hero-social-link:hover {
+  background-color: hsl(var(--primary) / 0.1);
   border-color: hsl(var(--primary));
+  color: hsl(var(--gold));
+}
+
+.hero-description-container {
+  padding-top: 2rem;
+  padding-bottom: 10rem;
+}
+
+.table-header {
+  background-color: hsl(var(--accent-foreground));
+}
+
+.table-body {
+  background-color: hsl(var(--accent-foreground));
+}
+
+.table-cell-highlighted {
+  border-color: hsl(var(--muted-foreground));
   color: hsl(var(--gold));
   background-color: hsl(var(--primary) / 0.1);
 }
 
-.hero-description-container {
-  max-width: 50rem;
+.table-cell-highlighted:hover {
+  background-color: hsl(var(--primary) / 0.2);
+  box-shadow: 0 0 20px hsl(var(--gold) / 0.3);
+}
+
+.skills-list {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 10rem;
+  padding: 1rem 0;
+}
+
+.skill-badge {
+  font-size: 2.5rem;
+}
+
+.tooltip-content {
+  z-index: 10;
+  background-color: hsl(var(--navy-dark));
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: hsl(var(--navy-medium)) 1px solid;
+  /* color: hsl(var(--navy-medium)); */
+}
+
+.tooltip-content svg, .tooltip-content span, .tooltip-content polygon {
+  z-index: -10; 
 }
 
 /* Animated Banner */

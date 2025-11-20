@@ -1,12 +1,19 @@
 import { useState } from 'react'
 import './App.css'
-import { Linkedin, Github, Instagram, Mail, Phone, ChevronLeft, ChevronRight, Menu, X } from 'lucide-react'
+
+// Shadcn Components
+import { Table, TableBody, TableHead, TableHeader, TableRow, TableCell } from "@/components/ui/table"
+import { Tooltip, TooltipContent, TooltipTrigger } from './components/ui/tooltip'
+
+// Icons
+import { Phone, ChevronLeft, ChevronRight, Menu, X } from 'lucide-react'
 import { Icon } from '@iconify/react'
 
 function App() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [menuOpen, setMenuOpen] = useState(false)
 
+  // PROJECTS
   const portfolioItems = [
     {
       title: "Title",
@@ -119,12 +126,169 @@ function App() {
               </a>
             </div>
 
-            <div className="hero-description-container mt-6 max-w-3xl mx-auto">
-              <p className="text-lg text-justify">
-                I am a passionate deep learning engineer with a strong foundation in computer science and mathematics. My expertise lies in developing and implementing advanced machine learning algorithms to solve complex problems. I thrive on innovation and continuously seek to expand my knowledge in the ever-evolving field of artificial intelligence.
-              </p>
+            <div className="hero-description-container max-w-3xl mx-auto">
+              <p className="text-lg text-center">Areas of Expertise</p>
+              <Table className="max-w-[55rem] pb-[2rem] px-[1rem] mx-auto">
+                <TableHeader className="table-header">
+                  <TableRow>
+                    <TableHead className="text-center p-[1rem]">AI/ML</TableHead>
+                    <TableHead className="text-center p-[1rem]">FrontEnd</TableHead>
+                    <TableHead className="text-center p-[1rem]">BackEnd</TableHead>
+                    <TableHead className="text-center p-[1rem]">Database</TableHead>
+                    <TableHead className="text-center p-[1rem]">Tools</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody className="table-body">
+                  <TableRow>
+                    <TableCell>
+                      <div className="skills-list p-[0.5rem]">
+                        <Tooltip>
+                          <TooltipTrigger className="tooltip-trigger" asChild>
+                            <Icon className="skill-badge" icon="material-icon-theme:python" />
+                          </TooltipTrigger>
+                          <TooltipContent className="tooltip-content">Python</TooltipContent>
+                        </Tooltip>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Icon className="skill-badge" icon="devicon:tensorflow" />
+                          </TooltipTrigger>
+                          <TooltipContent className="tooltip-content">Tensorflow</TooltipContent>
+                        </Tooltip>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Icon className="skill-badge" icon="devicon:pandas" />
+                          </TooltipTrigger>
+                          <TooltipContent className="tooltip-content">Pandas</TooltipContent>
+                        </Tooltip>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Icon className="skill-badge" icon="devicon:keras" />
+                          </TooltipTrigger>
+                          <TooltipContent className="tooltip-content">Keras</TooltipContent>
+                        </Tooltip>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Icon className="skill-badge" icon="simple-icons:langchain" />
+                          </TooltipTrigger>
+                          <TooltipContent className="tooltip-content">Langchain</TooltipContent>
+                        </Tooltip>
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <div className="skills-list p-[0.5rem]">
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Icon className="skill-badge" icon="devicon:streamlit" />
+                          </TooltipTrigger>
+                          <TooltipContent className="tooltip-content">Streamlit</TooltipContent>
+                        </Tooltip>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Icon className="skill-badge" icon="simple-icons:odoo" />
+                          </TooltipTrigger>
+                          <TooltipContent className="tooltip-content">Odoo</TooltipContent>
+                        </Tooltip>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Icon className="skill-badge" icon="skill-icons:html" />
+                          </TooltipTrigger>
+                          <TooltipContent className="tooltip-content">HTML</TooltipContent>
+                        </Tooltip>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Icon className="skill-badge" icon="skill-icons:css" />
+                          </TooltipTrigger>
+                          <TooltipContent className="tooltip-content">CSS</TooltipContent>
+                        </Tooltip>
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <div className="skills-list p-[0.5rem]">
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Icon className="skill-badge" icon="devicon:react" />
+                          </TooltipTrigger>
+                          <TooltipContent className="tooltip-content">React</TooltipContent>
+                        </Tooltip>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Icon className="skill-badge" icon="skill-icons:flask-light" />
+                          </TooltipTrigger>
+                          <TooltipContent className="tooltip-content">Flask</TooltipContent>
+                        </Tooltip>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Icon className="skill-badge" icon="material-icon-theme:django" />
+                          </TooltipTrigger>
+                          <TooltipContent className="tooltip-content">Django</TooltipContent>
+                        </Tooltip>
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <div className="skills-list p-[0.5rem]">
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Icon className="skill-badge" icon="simple-icons:mysql" />
+                          </TooltipTrigger>
+                          <TooltipContent className="tooltip-content">MySQL</TooltipContent>
+                        </Tooltip>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Icon className="skill-badge" icon="akar-icons:postgresql-fill" />
+                          </TooltipTrigger>
+                          <TooltipContent className="tooltip-content">PostgreSQL</TooltipContent>
+                        </Tooltip>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Icon className="skill-badge" icon="logos:supabase-icon" />
+                          </TooltipTrigger>
+                          <TooltipContent className="tooltip-content">Supabase</TooltipContent>
+                        </Tooltip>
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <div className="skills-list p-[0.5rem]">
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Icon className="skill-badge" icon="devicon:vscode" />
+                          </TooltipTrigger>
+                          <TooltipContent className="tooltip-content">VS Code</TooltipContent>
+                        </Tooltip>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Icon className="skill-badge" icon="devicon:googlecolab" />
+                          </TooltipTrigger>
+                          <TooltipContent className="tooltip-content">Google Colab</TooltipContent>
+                        </Tooltip>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Icon className="skill-badge" icon="devicon:docker" />
+                          </TooltipTrigger>
+                          <TooltipContent className="tooltip-content">Docker</TooltipContent>
+                        </Tooltip>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Icon className="skill-badge" icon="mdi:github" />
+                          </TooltipTrigger>
+                          <TooltipContent className="tooltip-content">Github</TooltipContent>
+                        </Tooltip>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Icon className="skill-badge" icon="logos:tableau-icon" />
+                          </TooltipTrigger>
+                          <TooltipContent className="tooltip-content">Tableau</TooltipContent>
+                        </Tooltip>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="table-cell-highlighted">
+                      Prefered
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
             </div>
-
           </div>
         </section>
 
@@ -154,6 +318,10 @@ function App() {
                     <p className="carousel-description">
                       {portfolioItems[currentSlide].description}
                     </p>
+                    <div className="flex flex-row justify-around">
+                      <a href="">View demo</a>
+                      <a href="">Visit repository</a>
+                    </div>
                   </div>
 
                   {/* Navigation inside text panel */}
@@ -203,7 +371,7 @@ function App() {
               rel="noopener noreferrer"
               className="cta-button btn-glow"
             >
-              <Linkedin size={24} />
+              {/* <Linkedin size={24} /> */}
               REACH ME
             </a>
           </div>
@@ -219,7 +387,7 @@ function App() {
                 rel="noopener noreferrer"
                 className="footer-link"
               >
-                <Instagram size={20} />
+                {/* <Instagram size={20} /> */}
                 <span>akhdilputra_</span>
               </a>
               <a
@@ -235,7 +403,7 @@ function App() {
                 rel="noopener noreferrer"
                 className="footer-link"
               >
-                <Github size={20} />
+                {/* <Github size={20} /> */}
                 <span>raffiakhdilputra</span>
               </a>
               <a
@@ -244,14 +412,14 @@ function App() {
                 rel="noopener noreferrer"
                 className="footer-link"
               >
-                <Linkedin size={20} />
+                {/* <Linkedin size={20} /> */}
                 <span>muhammadraffiakhdilputra</span>
               </a>
               <a
                 href="mailto:raffiakhdilputra123@gmail.com"
                 className="footer-link"
               >
-                <Mail size={20} />
+                {/* <Mail size={20} /> */}
                 <span>raffiakhdilputra123@gmail.com</span>
               </a>
             </div>
