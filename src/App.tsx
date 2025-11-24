@@ -10,6 +10,7 @@ import { ChevronLeft, ChevronRight, Menu, X, ExternalLink } from 'lucide-react'
 import { Icon } from '@iconify/react'
 
 function App() {
+  // STATES
   const [currentSlide, setCurrentSlide] = useState(0)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -17,7 +18,7 @@ function App() {
   const portfolioItems = [
     {
       title: "Journalist Work Attribution & Cross-Media Tracking System",
-      description: "LLM-powered system to attribute journalist work across media platforms using Langchain and VectorDB.",
+      description: "Developed an LLM-driven attribution system that maps and verifies journalists work across media platforms using LangChain pipelines and Vector Databases.",
       img: "",
       status: "IN PROGRESS",
       demo: "unavailable",
@@ -25,7 +26,7 @@ function App() {
     },
     {
       title: "Emotion Recognition using LSTM",
-      description: "LSTM model for emotion recognition from text, deployed as a web app with Streamlit. Exploration project for NLP and deep learning.",
+      description: "Built an LSTM-based emotion classification model and deployed it via Streamlit as an interactive NLP experimentation platform.",
       img: "/img/emotion-recognition.jpg",
       status: "FINISHED",
       demo: "https://emotion-recognition.streamlit.app",
@@ -33,7 +34,7 @@ function App() {
     },
     {
       title: "Depressed or Not? - Naive Bayes Depression Detection ",
-      description: "Depression detection using Naive Bayes models on social media text data, deployed with Streamlit.",
+      description: "Implemented a Naive Bayes powered depression detection pipeline for social media text, complete with a Streamlit interface for real-time inference.",
       img: "/img/depressed-classifier.jpg",
       status: "FINISHED",
       demo: "https://depressed-classifier.streamlit.app/",
@@ -41,15 +42,15 @@ function App() {
     },
     {
       title: "Automobile Price Prediction",
-      description: "Predicting automobile prices using linear Neural Networks with Tensorflow and Keras.",
-      img: "",
+      description: "Created an automobile price prediction model using lightweight neural networks (TensorFlow/Keras) to explore ANN performance in structured-data regression tasks.",
+      img: "/img/automobile-evaluation.jpg",
       status: "FINISHED",
       demo: "unavailable",
-      repo: "https://github.com/RaffiAkhdilputra/"
+      repo: "https://github.com/RaffiAkhdilputra/automobile-price-prediction-model"
     },
     {
       title: "Heart Attack Symptom Predictor",
-      description: "Depression detection using Naive Bayes models on social media text data, deployed with Streamlit.",
+      description: "An ML model that predicts potential heart attack symptoms using clinical and lifestyle data, enabling early-risk awareness through data-driven insights.",
       img: "/img/heart-attack-symptom-predictor.jpg",
       status: "FINISHED",
       demo: "unavailable",
@@ -57,7 +58,7 @@ function App() {
     },
     {
       title: "myMBTI - MBTI Testing Web App",
-      description: "A 59-question MBTI testing web app with automated scoring and personality result generation using customized gemini AI.",
+      description: "Developed a 59-item MBTI assessment web application featuring automated scoring, result generation, and a customized Gemini AI powered analysis layer.",
       img: "/img/my-mbti.jpg",
       status: "FINISHED",
       demo: "https://my-mbti.vercel.app/",
@@ -65,7 +66,7 @@ function App() {
     },
     {
       title: "DSTRCT - Online Thrift Store",
-      description: "Laravel livewire-based online thrift store with user authentication, product management, and shopping cart features.",
+      description: "Built a Laravel Livewire based online thrift-store platform with authentication, product management, and a fully functional shopping cart ecosystem.",
       img: "/img/DSTRCT.jpg",
       status: "FINISHED",
       demo: "unavailable",
@@ -87,11 +88,11 @@ function App() {
 
   const currentProject = portfolioItems[currentSlide]
 
-  const LazyImage = ({ src, alt }: { src: string; alt: string }) => {
+  const LazyImage = ({ src, alt, className }: { src: string; alt: string, className: string }) => {
     const [loaded, setLoaded] = useState(false)
 
     return (
-      <div className="carousel-project-image">
+      <div className={className}>
         {!loaded && (
           <div className="placeholder-image animate-pulse">
             <Icon icon="line-md:loading-loop" width={40} height={40} />
@@ -146,13 +147,17 @@ function App() {
         {/* Hero Section */}
         <section id="profile" className="hero-section">
           <div className="text-center px-6 animate-fade-in">
-            <img className="profile-picture bg-white" src="" alt="Profile Picture" />
             <h1 className="hero-subtitle">
               MUHAMMAD
             </h1>
             <h2 className="hero-title">
               RAFFI AKHDILPUTRA
             </h2>
+            <div className="roles-container">
+              <p className="hero-roles">
+                ⭐ AI/ML Enthusiast &#8226; Web Developer &#8226; Software Engineer
+              </p>
+            </div>
 
             {/* Social Links */}
             <div className="hero-social-links">
@@ -265,9 +270,15 @@ function App() {
                       <div className="skills-list p-[0.5rem]">
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <Icon className="skill-badge" icon="devicon:react" />
+                            <Icon className="skill-badge" icon="devicon:javascript" />
                           </TooltipTrigger>
-                          <TooltipContent className="tooltip-content">React</TooltipContent>
+                          <TooltipContent className="tooltip-content">JavaScript</TooltipContent>
+                        </Tooltip>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Icon className="skill-badge" icon="devicon:typescript" />
+                          </TooltipTrigger>
+                          <TooltipContent className="tooltip-content">TypeScript</TooltipContent>
                         </Tooltip>
                         <Tooltip>
                           <TooltipTrigger asChild>
@@ -361,6 +372,7 @@ function App() {
                     <LazyImage
                       src={currentProject.img}
                       alt={currentProject.title}
+                      className="carousel-project-image"
                     />
                   )
                     : (
@@ -520,11 +532,11 @@ function App() {
             </div>
 
             <div className="footer-bottom">
-              <p>nothing more down here...</p>
+              <p>&#8226; nothing more down here... &#8226;</p>
             </div>
           </div>
         </footer>
-      </main>
+      </main >
     </>
   )
 }
