@@ -10,8 +10,9 @@ export default defineConfig({
       babel: {
         plugins: [['babel-plugin-react-compiler']],
       },
-    }), tailwindcss(),
+    }), tailwindcss(), ghPages(),
   ],
+  base: '/portofolio/',
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
