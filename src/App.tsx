@@ -162,7 +162,7 @@ function App() {
             {/* Social Links */}
             <div className="hero-social-links">
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/muhammadraffiakhdilputra"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hero-social-link"
@@ -171,7 +171,7 @@ function App() {
                 <Icon icon="mdi:linkedin" />
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/raffiakhdilputra"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hero-social-link"
@@ -180,7 +180,7 @@ function App() {
                 <Icon icon="mdi:github" />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://instagram.com/akhdilputra_"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hero-social-link"
@@ -474,7 +474,7 @@ function App() {
               Interested with my work? let's connect!
             </h2>
             <a
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/muhammadraffiakhdilputra"
               target="_blank"
               rel="noopener noreferrer"
               className="cta-button btn-glow"
