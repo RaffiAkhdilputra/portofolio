@@ -501,7 +501,7 @@ function App() {
                 href="tel:+6282178882457"
                 className="footer-link"
               >
-                <Icon className="iconify" icon="mdi:linkedin" />
+                <Icon className="iconify" icon="mdi:phone" />
                 <span>+62 812-7888-2457</span>
               </a>
               <a
