@@ -6,7 +6,7 @@ import { Table, TableBody, TableHead, TableHeader, TableRow, TableCell } from "@
 import { Tooltip, TooltipContent, TooltipTrigger } from './components/ui/tooltip'
 
 // Icons
-import { Phone, ChevronLeft, ChevronRight, Menu, X } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Menu, X, ExternalLink } from 'lucide-react'
 import { Icon } from '@iconify/react'
 
 function App() {
@@ -16,24 +16,60 @@ function App() {
   // PROJECTS
   const portfolioItems = [
     {
-      title: "Title",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus felis arcu, fringilla eu sem id, tincidunt hendrerit lacus. Curabitur et orci id justo porta fringilla vitae id augue. Etiam commodo ipsum sit amet pulvinar rhoncus. Aliquam congue quam nec magna consequat, et interdum velit feugiat."
+      title: "Journalist Work Attribution & Cross-Media Tracking System",
+      description: "LLM-powered system to attribute journalist work across media platforms using Langchain and VectorDB.",
+      img: "",
+      status: "IN PROGRESS",
+      demo: "unavailable",
+      repo: "https://drive.google.com/drive/folders/1ZbedVSK1nKvT7cFneIedeU7Afo9LoW5b?usp=drive_link"
     },
     {
-      title: "Project Two",
-      description: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      title: "Emotion Recognition using LSTM",
+      description: "LSTM model for emotion recognition from text, deployed as a web app with Streamlit. Exploration project for NLP and deep learning.",
+      img: "/img/emotion-recognition.jpg",
+      status: "FINISHED",
+      demo: "https://emotion-recognition.streamlit.app",
+      repo: "https://github.com/RaffiAkhdilputra/emotion-recognition-lstm-model"
     },
     {
-      title: "Project Three",
-      description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      title: "Depressed or Not? - Naive Bayes Depression Detection ",
+      description: "Depression detection using Naive Bayes models on social media text data, deployed with Streamlit.",
+      img: "/img/depressed-classifier.jpg",
+      status: "FINISHED",
+      demo: "https://depressed-classifier.streamlit.app/",
+      repo: "https://github.com/RaffiAkhdilputra/emotion-recognition-lstm-model"
     },
     {
-      title: "Project Four",
-      description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore."
+      title: "Automobile Price Prediction",
+      description: "Predicting automobile prices using linear Neural Networks with Tensorflow and Keras.",
+      img: "",
+      status: "FINISHED",
+      demo: "unavailable",
+      repo: "https://github.com/RaffiAkhdilputra/"
     },
     {
-      title: "Project Five",
-      description: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      title: "Heart Attack Symptom Predictor",
+      description: "Depression detection using Naive Bayes models on social media text data, deployed with Streamlit.",
+      img: "/img/heart-attack-symptom-predictor.jpg",
+      status: "FINISHED",
+      demo: "unavailable",
+      repo: "https://github.com/RaffiAkhdilputra/heart-attack-symptom-prediction"
+    },
+    {
+      title: "myMBTI - MBTI Testing Web App",
+      description: "A 59-question MBTI testing web app with automated scoring and personality result generation using customized gemini AI.",
+      img: "/img/my-mbti.jpg",
+      status: "FINISHED",
+      demo: "https://my-mbti.vercel.app/",
+      repo: "https://github.com/RaffiAkhdilputra/my-MBTI"
+    },
+    {
+      title: "DSTRCT - Online Thrift Store",
+      description: "Laravel livewire-based online thrift store with user authentication, product management, and shopping cart features.",
+      img: "/img/DSTRCT.jpg",
+      status: "FINISHED",
+      demo: "unavailable",
+      repo: "https://github.com/RaffiAkhdilputra/DSTRCT"
     }
   ]
 
@@ -47,6 +83,29 @@ function App() {
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index)
+  }
+
+  const currentProject = portfolioItems[currentSlide]
+
+  const LazyImage = ({ src, alt }: { src: string; alt: string }) => {
+    const [loaded, setLoaded] = useState(false)
+
+    return (
+      <div className="carousel-project-image">
+        {!loaded && (
+          <div className="placeholder-image animate-pulse">
+            <Icon icon="line-md:loading-loop" width={40} height={40} />
+          </div>
+        )}
+        <img
+          src={src}
+          alt={alt}
+          onLoad={() => setLoaded(true)}
+          style={{ display: loaded ? 'block' : 'none' }}
+          className="w-full h-full object-cover"
+        />
+      </div>
+    )
   }
 
   return (
@@ -292,44 +351,81 @@ function App() {
           </div>
         </section>
 
-        {/* Animated Banner */}
-        <div className="animated-banner">
-          <div className="banner-text">
-            DEEP LEARNING ARTIFICIAL INTELLIGENCE AUTOMATIONS MACHINE LEARNING ARTIFICIAL INTELLIGENCE AUTOMATIONS MACHINE LEARNING
-          </div>
-        </div>
-
         {/* Portfolio Carousel Section */}
-        <section id="projects" className="portfolio-carousel-section">
+        <section id="projects" className="portfolio-carousel-section min-h-screen flex flex-col justify-center">
           <div className="carousel-container">
             <div className="carousel-card">
               <div className="carousel-content-wrapper">
-                {/* Image Side */}
                 <div className="carousel-image">
+                  {currentProject.img !== "" ? (
+                    <LazyImage
+                      src={currentProject.img}
+                      alt={currentProject.title}
+                    />
+                  )
+                    : (
+                      <div className="carousel-project-image placeholder-image">
+                        <Icon icon="mdi:image-off-outline" />
+                        <p className="mt-4 text-sm text-white/40">No Image Available</p>
+                      </div>
+                    )
+                  }
                   <div className="carousel-lines"></div>
                 </div>
 
-                {/* Text Side */}
                 <div className="carousel-text-panel">
                   <div className="carousel-text-content">
-                    <h3 className="carousel-title">
-                      {portfolioItems[currentSlide].title}
-                    </h3>
-                    <p className="carousel-description">
-                      {portfolioItems[currentSlide].description}
-                    </p>
-                    <div className="flex flex-row justify-around">
-                      <a href="">View demo</a>
-                      <a href="">Visit repository</a>
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className={`${currentProject.status === 'IN PROGRESS'
+                        ? 'in-progress'
+                        : 'finished'
+                        }`}>
+                        {currentProject.status}
+                      </span>
+                    </div>
+
+                    <div>
+                      <h3 className="carousel-title">{currentProject.title}</h3>
+                      <p className="carousel-description">{currentProject.description}</p>
+                    </div>
+
+                    <div className="carousel-action-buttons">
+                      {currentProject.demo !== 'unavailable' ? (
+                        <a
+                          href={currentProject.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="carousel-action-button"
+                        >
+                          <ExternalLink size={16} />
+                          <span>View Demo</span>
+                        </a>
+                      ) : (
+                        <button
+                          disabled
+                          className="carousel-action-button"
+                        >
+                          <ExternalLink size={16} />
+                          <span>Demo Unavailable</span>
+                        </button>
+                      )}
+                      <a
+                        href={currentProject.repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="carousel-action-button"
+                      >
+                        <Icon icon="mdi:github" />
+                        <span>Repository</span>
+                      </a>
                     </div>
                   </div>
 
-                  {/* Navigation inside text panel */}
                   <div className="carousel-nav-inline">
                     <button
                       onClick={prevSlide}
                       className="carousel-button-inline"
-                      aria-label="Previous slide"
+                      aria-label="Previous project"
                     >
                       <ChevronLeft size={20} />
                     </button>
@@ -340,7 +436,7 @@ function App() {
                           key={index}
                           onClick={() => goToSlide(index)}
                           className={`carousel-dot-inline ${index === currentSlide ? 'active' : ''}`}
-                          aria-label={`Go to slide ${index + 1}`}
+                          aria-label={`Go to project ${index + 1}`}
                         />
                       ))}
                     </div>
@@ -348,7 +444,7 @@ function App() {
                     <button
                       onClick={nextSlide}
                       className="carousel-button-inline"
-                      aria-label="Next slide"
+                      aria-label="Next project"
                     >
                       <ChevronRight size={20} />
                     </button>
@@ -371,7 +467,6 @@ function App() {
               rel="noopener noreferrer"
               className="cta-button btn-glow"
             >
-              {/* <Linkedin size={24} /> */}
               REACH ME
             </a>
           </div>
@@ -387,14 +482,14 @@ function App() {
                 rel="noopener noreferrer"
                 className="footer-link"
               >
-                {/* <Instagram size={20} /> */}
+                <Icon className="iconify" icon="mdi:instagram" />
                 <span>akhdilputra_</span>
               </a>
               <a
                 href="tel:+6282178882457"
                 className="footer-link"
               >
-                <Phone size={20} />
+                <Icon className="iconify" icon="mdi:linkedin" />
                 <span>+62 812-7888-2457</span>
               </a>
               <a
@@ -403,7 +498,7 @@ function App() {
                 rel="noopener noreferrer"
                 className="footer-link"
               >
-                {/* <Github size={20} /> */}
+                <Icon className="iconify" icon="mdi:github" />
                 <span>raffiakhdilputra</span>
               </a>
               <a
@@ -412,14 +507,14 @@ function App() {
                 rel="noopener noreferrer"
                 className="footer-link"
               >
-                {/* <Linkedin size={20} /> */}
+                <Icon className="iconify" icon="mdi:linkedin" />
                 <span>muhammadraffiakhdilputra</span>
               </a>
               <a
                 href="mailto:raffiakhdilputra123@gmail.com"
                 className="footer-link"
               >
-                {/* <Mail size={20} /> */}
+                <Icon className="iconify" icon="mdi:gmail" />
                 <span>raffiakhdilputra123@gmail.com</span>
               </a>
             </div>
